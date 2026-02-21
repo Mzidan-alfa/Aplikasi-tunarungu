@@ -1,0 +1,27 @@
+.page { display: none; min-height: 100vh; }
+.page-active { display: flex; flex-direction: column; }
+.content-box { max-height: 55vh; overflow-y: auto; scrollbar-width: thin; }
+
+#loginPage .w-500, #dashboardPage .w-100 {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+img { width: 100%; height: 100%; object-fit: contain; }
+
+.pulse-mic { 
+    animation: pulse 1.5s infinite; 
+    background-color: #ef4444 !important; 
+    color: white !important;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.info-section { margin-bottom: 1.5rem; }
+.info-title { font-weight: 800; color: #1e40af; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 0.4rem; display: block; }
+.info-text { font-size: 1rem; color: #475569; line-height: 1.6; }

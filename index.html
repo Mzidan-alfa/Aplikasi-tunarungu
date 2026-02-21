@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABIOTIK - Inklusif & Interaktif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+
+    <div id="overlay" class="fixed inset-0 z-50 bg-blue-700 flex flex-col items-center justify-center text-white p-10 cursor-pointer text-center">
+        <h1 class="text-6xl font-black mb-4 italic tracking-tighter">ABIOTIK</h1>
+        <p class="text-xl animate-pulse">Ketuk Layar untuk Memulai</p>
+    </div>
+
+    <main id="loginPage" class="page page-active max-w-md mx-auto items-center justify-center p-8">
+        <div class="w-full space-y-8 text-center">
+            <div class="w-500 h-500 mx-auto flex items-center justify-center overflow-hidden mb-2">
+                <img src="Logo abiotik.png" alt="Logo ABIOTIK" class="w-full h-full object-contain" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'text-9xl font-black text-blue-600\'>A</span>'">
+            </div>
+            
+            <div class="space-y-2">
+                <h2 class="text-3xl font-bold text-slate-800">Masuk Akun</h2>
+                <p class="text-slate-500">Selamat datang di Abiotik, Revani!</p>
+            </div>
+
+            <div class="space-y-4">
+                <input type="text" placeholder="Email atau Username" onfocus="speak('Kolom email')" class="w-full p-4 rounded-2xl border-2 border-slate-200 outline-none focus:border-blue-500 text-center text-lg">
+                <input type="password" placeholder="Kata Sandi" onfocus="speak('Kolom kata sandi')" class="w-full p-4 rounded-2xl border-2 border-slate-200 outline-none focus:border-blue-500 text-center text-lg">
+                <button onclick="navigasiKe('dashboardPage', 'Berhasil masuk. Halo Revani, selamat belajar.')" class="w-full p-4 bg-blue-600 text-white font-bold rounded-2xl shadow-lg active:scale-95 transition-all text-xl">MASUK</button>
+            </div>
+        </div>
+    </main>
+
+    <main id="dashboardPage" class="page max-w-md mx-auto">
+        <header class="p-8 pt-12 flex items-center justify-between">
+            <div>
+                <h1 class="text-4xl font-black text-blue-500">Halo, Revani!</h1>
+                <p class="text-slate-500 mt-1">Siap belajar hari ini?</p>
+            </div>
+            <div class="w-20 h-20 flex items-center justify-center overflow-hidden">
+                <img src="Logo abiotik.png" alt="Logo" class="w-full h-full object-contain" onerror="this.style.display='none'">
+            </div>
+        </header>
+        <div class="grid grid-cols-2 gap-4 px-6">
+            <button onclick="navigasiKe('materiPage', 'Membuka pilihan materi')" class="p-8 bg-white rounded-[32px] shadow-sm border-2 border-blue-50 flex flex-col items-center">
+                <span class="text-5xl mb-3">📚</span><span class="font-bold text-blue-900 uppercase">Materi</span>
+            </button>
+            <button onclick="bukaEvaluasi()" class="p-8 bg-white rounded-[32px] shadow-sm border-2 border-red-50 flex flex-col items-center">
+                <span class="text-5xl mb-3">📝</span><span class="font-bold text-red-700 uppercase">Evaluasi</span>
+            </button>
+            <button onclick="bukaHalamanInfo()" class="p-6 bg-blue-50 rounded-[32px] flex flex-col items-center">
+                <span class="text-3xl mb-2">ℹ️</span><span class="font-bold text-xs uppercase text-blue-800">Info</span>
+            </button>
+            <button onclick="speak('Permainan edukatif segera hadir.')" class="p-6 bg-slate-100 rounded-[32px] flex flex-col items-center opacity-60">
+                <span class="text-3xl mb-2">🎮</span><span class="font-bold text-xs uppercase">Game</span>
+            </button>
+        </div>
+    </main>
+
+    <main id="materiPage" class="page max-w-md mx-auto">
+        <header class="p-6 flex items-center gap-4">
+            <button onclick="navigasiKe('dashboardPage', 'Kembali')" class="w-12 h-12 bg-white rounded-full shadow-md text-2xl">←</button>
+            <h2 class="text-2xl font-bold">Modul Belajar</h2>
+        </header>
+        <div id="daftarModul" class="p-6 space-y-4"></div>
+    </main>
+
+    <main id="detailMateriPage" class="page max-w-md mx-auto">
+        <header class="p-6 flex items-center justify-between">
+            <button onclick="navigasiKe('materiPage', 'Kembali')" class="w-12 h-12 bg-white rounded-full shadow-md text-2xl">←</button>
+            <h2 id="judulModul" class="text-sm font-black text-blue-600 uppercase">MODUL</h2>
+            <div class="w-12"></div>
+        </header>
+        <div class="flex-1 px-8 py-4">
+            <div id="kontenTeks" class="content-box bg-white p-8 rounded-[40px] shadow-xl text-xl leading-relaxed text-slate-700 border-2 border-blue-50">...</div>
+        </div>
+        <div class="p-8 flex gap-4">
+            <button onclick="bacaUlang()" class="w-20 h-20 bg-blue-100 text-blue-600 rounded-full text-3xl">🔄</button>
+            <button id="btnLanjut" onclick="langkahBerikutnya()" class="flex-1 h-20 bg-blue-600 text-white rounded-[30px] font-bold text-xl">LANJUTKAN</button>
+        </div>
+    </main>
+
+    <main id="evaluasiPage" class="page max-w-md mx-auto">
+        <header class="p-6"><button onclick="navigasiKe('dashboardPage', 'Berhenti')" class="w-12 h-12 bg-white rounded-full shadow-md text-2xl">←</button></header>
+        <div class="flex-1 flex flex-col items-center justify-center px-8 text-center">
+            <div id="statusMic" class="mb-4 px-6 py-2 bg-red-100 text-red-600 rounded-full font-black text-sm hidden">● MENDENGARKAN...</div>
+            <div id="visualizer" class="w-32 h-32 bg-slate-200 rounded-full flex items-center justify-center text-5xl mb-8">🎤</div>
+            <p id="teksPertanyaan" class="text-2xl font-bold text-slate-800 leading-snug">...</p>
+        </div>
+    </main>
+
+    <main id="infoPage" class="page max-w-md mx-auto">
+        <header class="p-6 flex items-center gap-4">
+            <button onclick="navigasiKe('dashboardPage', 'Kembali')" class="w-12 h-12 bg-white rounded-full shadow-md text-2xl">←</button>
+            <h2 class="text-2xl font-bold">Informasi</h2>
+        </header>
+        <div class="flex-1 px-6 pb-6">
+            <div id="kontenInfo" class="content-box bg-white p-6 rounded-[32px] shadow-lg border-2 border-blue-50"></div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
